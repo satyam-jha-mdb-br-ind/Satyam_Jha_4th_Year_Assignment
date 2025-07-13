@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Admin Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin Dashboard</h2>
+
+<!-- Add Project Form -->
+<h3>Add Project</h3>
+<form asp-action="AddProject" asp-controller="Admin" enctype="multipart/form-data" method="post">
+    <input type="text" name="Name" placeholder="Project Name" required />
+    <textarea name="Description" placeholder="Project Description"></textarea>
+    <input type="file" name="imageFile" required />
+    <button type="submit">Add Project</button>
+</form>
+
+<!-- Add Client Form -->
+<h3>Add Client</h3>
+<form asp-action="AddClient" asp-controller="Admin" enctype="multipart/form-data" method="post">
+    <input type="text" name="Name" placeholder="Client Name" required />
+    <input type="text" name="Designation" placeholder="Designation" required />
+    <textarea name="Description" placeholder="Client Description"></textarea>
+    <input type="file" name="imageFile" required />
+    <button type="submit">Add Client</button>
+</form>
+
+<!-- Contact Submissions -->
+<h3>Contact Form Submissions</h3>
+<table>
+    <tr><th>Name</th><th>Email</th><th>Mobile</th><th>City</th></tr>
+    @foreach (var contact in ViewBag.Contacts)
+    {
+        <tr>
+            <td>@contact.FullName</td>
+            <td>@contact.Email</td>
+            <td>@contact.MobileNumber</td>
+            <td>@contact.City</td>
+        </tr>
+    }
+</table>
+
+<!-- Newsletter Subscribers -->
+<h3>Newsletter Subscribers</h3>
+<ul>
+    @foreach (var sub in ViewBag.Subscriptions)
+    {
+        <li>@sub.Email</li>
+    }
+</ul>

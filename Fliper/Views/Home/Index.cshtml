@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<h1>Our Projects</h1>
+<div>
+    @foreach (var project in Model.Projects)
+    {
+        <div>
+            <img src="@project.ImagePath" width="200" />
+            <h3>@project.Name</h3>
+            <p>@project.Description</p>
+            <button disabled>Read More</button>
+        </div>
+    }
+</div>
+
+<h1>Happy Clients</h1>
+<div>
+    @foreach (var client in Model.Clients)
+    {
+        <div>
+            <img src="@client.ImagePath" width="100" />
+            <p>@client.Description</p>
+            <h4>@client.Name</h4>
+            <small>@client.Designation</small>
+        </div>
+    }
+</div>
+
+<h2>Contact Us</h2>
+<form asp-action="SubmitContact" method="post">
+    <input type="text" name="FullName" placeholder="Full Name" required />
+    <input type="email" name="Email" placeholder="Email" required />
+    <input type="text" name="MobileNumber" placeholder="Mobile" required />
+    <input type="text" name="City" placeholder="City" />
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Subscribe to Newsletter</h2>
+<form asp-action="Subscribe" method="post">
+    <input type="email" name="email" placeholder="Email Address" required />
+    <button type="submit">Subscribe</button>
+</form>
